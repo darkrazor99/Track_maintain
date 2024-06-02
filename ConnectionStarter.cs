@@ -1,7 +1,9 @@
 ﻿namespace TrackMaintain;
 
+using System;
 using System.Data.SQLite;
 using System.IO;
+using Xceed.Words.NET;
 
 
 public class ConnectionStarter
@@ -20,11 +22,13 @@ public class ConnectionStarter
     {
         // edit this to create all my stuff.
         string createTableQuery = @"
-            CREATE TABLE IF NOT EXISTS Books (
+            CREATE TABLE IF NOT EXISTS Customers (
                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                Title TEXT NOT NULL,
-                Author TEXT NOT NULL,
-                PublicationYear INTEGER
+                Name TEXT NOT NULL,
+                Address TEXT NOT NULL,
+                Model TEXT,
+                LastMaintenanceDate TEXT,
+                MaintenanceComment TEXT
             );
         ";
 
@@ -40,4 +44,5 @@ public class ConnectionStarter
             connection.Close();
         }
     }
+
 }
